@@ -1,9 +1,15 @@
 $portName = "TCPPort:172.17.30.30"
-
+$printDriverName = "Kyocera ECOSYS P6035cdn XPS"
 $portExists = Get-Printerport -Name $portname -ErrorAction SilentlyContinue
 
 if (-not $portExists) {
   Add-PrinterPort -name $portName -PrinterHostAddress "172.17.30.30"
 }
 
-Add-printerport -Name "Tech Office" -PrinterHostAddress "172.17.30.30"
+$printDriverExists = Get-PrinterDriver -name $printDriverName -ErrorAction SilentlyContinue
+
+if ($printDriverExists) {
+    Add-Printer -Name "IT Printer Test" -PortName $portName -DriverName $printDriverName
+}else{
+    Write-Warning "Printer Driver not installed"
+}
