@@ -1,1 +1,1 @@
-Copy-Item "test.txt" -Destination "C:\"
+Copy-Item "\\wsdc2\softdistro\test.txt" -Destination "C:\"
