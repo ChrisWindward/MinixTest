@@ -1,0 +1,9 @@
+$portName = "TCPPort:172.17.30.30"
+
+$portExists = Get-Printerport -Name $portname -ErrorAction SilentlyContinue
+
+if (-not $portExists) {
+  Add-PrinterPort -name $portName -PrinterHostAddress "172.17.30.30"
+}
+
+Add-printerport -Name "Tech Office" -PrinterHostAddress "172.17.30.30"
